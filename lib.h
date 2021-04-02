@@ -432,7 +432,7 @@ void getBookCostDetails(LIBRARY *lib);
 
 void getBookById(BOOK_TREE *root,int id,book **b);
 
-
+void insertBookRecord(book *key);
 
 
 

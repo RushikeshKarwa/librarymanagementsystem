@@ -485,7 +485,7 @@ void updateBookAvailability(book *ptr,int set)
 
 
 
-/*
+
 
 LIBRARY *updateStudentlistWeekly(LIBRARY *root)
 {
@@ -573,7 +573,7 @@ LIBRARY *updateStudentlistWeekly(LIBRARY *root)
     return tmp;
 }
 
-*/
+
 
 
 LIBRARY *deleteUnavailableBooks(LIBRARY *head)

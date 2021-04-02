@@ -9,7 +9,7 @@ void loadmenu()
 {
   printf("***************************************************************\n");
   printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
-  printf("*\tDEPARTMENT OF COMPUTER ENGINEERING LIBRARY\t\t\t\t\t\t\t*");
+  printf("*\tDEPARTMENT OF COMPUTER ENGINEERING LIBRARY\t\t\t\t\t\t\t*\n");
   printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
   printf("***************************************************************\n");
 
@@ -77,7 +77,19 @@ void printsubmenui()
   printf("Enter 0 to go back to main menu\n\n");
 }
 
+void menud()
+{
+  printf("1.To get the list of books\n");
+  printf("2.To get the assigned books to students\n");
+  printf("3.To get the students in the library\n");
+  printf("4.To delete the student from library on book return\n");
+  printf("5.To add new book in the library\n");
+  printf("6.To issue book to the student\n");
+  printf("7.To update student weekly\n");
+  printf("8.To Delete unavailable books \n");
+  printf("9.To exit from the library\n\n");
 
+}
 
 int main()
 {
@@ -91,8 +103,8 @@ int main()
   
   flag=1;  
   
-  
-  printmenu();
+   menud();
+  //printmenu();
   while(flag)
   {
     scanf("%c",&menu);
@@ -102,7 +114,7 @@ int main()
 	          check=1;
 		  system("clear");		 	        
 	          while(check)
-		  {
+		 {
 		    printsubmenua();
 		    scanf("%d",&sub);
 		    if(sub<0 || sub>3)
@@ -225,7 +237,7 @@ int main()
 		           lib = deleteStudentonReturn(lib);
 			   break;
 		      case 3:
-		         /*  lib=updateStudentlistWeekly(lib);*/
+		           lib=updateStudentlistWeekly(lib);
 			   break;	
 		      case 4: 
 		           lib=deleteUnavailableBooks(lib);
@@ -292,6 +304,17 @@ int main()
   }
   return 0;
 }
+/*
+void menu()
+{
+  printf("1.To get the list of books");
+  printf("2.To get the assigned books to students");
+  printf("3.To get the students in the library ");
+  printf("4.To delete the student from library on book return");
+  printf("5.To add new book in the library");
+  printf("6.To issue book to the student ");
+  printf("7.To update book for the week(delete for the week)");
+  printf("8.To exit from the library");
 
-
+}*/
 

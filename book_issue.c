@@ -627,7 +627,7 @@ void searchStudentByName(STUDENT_TREE *root,char  *name,int *x)
 }
 
 //Function to get the list of books issued to student based on given book title
- /*
+ 
 void  getBooksIssuedbyTitle(LIBRARY *root)
 {
   LIBRARY *tmp;
@@ -681,7 +681,7 @@ void listBooksbyId(ISSUE_TREE *root,int num,int *p)
   }
 }
    
-
+/*
 void  getBooksIssuedbyCourse(LIBRARY *root)
 {
   LIBRARY *tmp;

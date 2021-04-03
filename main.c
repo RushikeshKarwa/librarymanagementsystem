@@ -27,7 +27,8 @@ void menud()
   printf("6.To issue book to the student\n");
   printf("7.To get total book count in the library\n");
   printf("8.To get student list with issued books \n");
-  printf("9.To exit from the library\n\n");
+  printf("9.To get students by Book Title\n\n");
+  printf("10.To exit from the library\n\n");
 
 }
 int main()
@@ -110,10 +111,19 @@ int main()
                 printf("\n\n");
                 menud();
             break;
-          
-          case 9:
+
+          case 9:     
                 system("clear");
                 loadmenu();
+                getBooksIssuedbyTitle(lib);
+                printf("\n\n");
+                menud();
+                break;
+          
+          case 10:
+                system("clear");
+                loadmenu();
+                getBooksIssuedbyTitle(lib);
                 loop=0;
                 printf("Thank You for using this software :) !!!");
                 break;

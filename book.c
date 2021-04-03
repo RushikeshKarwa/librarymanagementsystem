@@ -769,7 +769,7 @@ void getAuthorBooks(BOOK_TREE *root,char *str,int *n)
         getAuthorBooks(root->right,str,&(*n));
     }
 }
-
+*/
 void getBookCount(LIBRARY *head)
 {
   LIBRARY *tmp;
@@ -797,7 +797,7 @@ void getBookCount(LIBRARY *head)
     }
     printf("Total Number of books available : %d\n",sumcount);
 }
-*/
+
 
 
 

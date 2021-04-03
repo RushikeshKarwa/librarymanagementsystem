@@ -25,8 +25,8 @@ void menud()
   printf("4.To delete the student from library on book return\n");
   printf("5.To add new book in the library\n");
   printf("6.To issue book to the student\n");
-  printf("7.To update student weekly\n");
-  printf("8.To Delete unavailable books \n");
+  printf("7.To get total book count in the library\n");
+  printf("8.To get student list with issued books \n");
   printf("9.To exit from the library\n\n");
 
 }
@@ -46,39 +46,76 @@ int main()
       switch(menu)
       {
           case 1:
+              system("clear");
+              loadmenu();
+              printf("BOOK AVAILABLE IN THE LIBRARY:\n\n");
                listBook(lib->btree);
+               printf("\n\n");
+               menud();
             break;
 
           case 2:
+              system("clear");
+              loadmenu();
+              printf("BOOKs ASSIGNED RECORD:\n\n");
               lib = getBooksofStudent(lib);
+              printf("\n\n");
+              menud();
             break;
 
           case 3:
+              system("clear");
+              loadmenu();
               lib->stree = loadStudents();
+              printf("\n\n");
+              menud();
             break;
         
           case 4:
+              system("clear");
+              loadmenu();
               lib = deleteStudentonReturn(lib);
+              printf("\n\n");
+              menud();
             break;
 
           case 5:
+               system("clear");
+               loadmenu();
                lib=addNewBooks(lib);
+               printf("\n\n");
+               menud();
             break;
 
           case 6:
+               system("clear");
+               loadmenu();
                lib=BookIssueRequest(lib);
+               printf("\n\n");
+               menud();
             break;
 
           case 7:
-               lib=updateStudentlistWeekly(lib);
+               system("clear");
+               loadmenu();
+               getBookCount(lib);
+               printf("\n\n");
+               menud();
             break;
 
           case 8:
-                lib=deleteUnavailableBooks(lib);
+                system("clear");
+                loadmenu();
+                getStudentBookIssues(lib);
+                printf("\n\n");
+                menud();
             break;
           
           case 9:
+                system("clear");
+                loadmenu();
                 loop=0;
+                printf("Thank You for using this software :) !!!");
                 break;
          
           default:

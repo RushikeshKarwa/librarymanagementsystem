@@ -863,7 +863,7 @@ LIBRARY *addNewBooks(LIBRARY *root)
   book *s;
   int flag;
   printf("Please enter following details to add new books to Library \n");
-  printf("<BOOKID>,<TITLE>,<AUTHOR NAME>,<COURSE>,<COST>,<QUANtITY>,<GENRE>\n");
+  printf("<BOOKID>,<TITLE>,<QUANTITY>\n");
   
   tmp=root;
   tmp->btree=getBookDB(); //Load tree with latest Book DB values

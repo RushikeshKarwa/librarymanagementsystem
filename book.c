@@ -78,6 +78,7 @@ void readBookRecords()
   book *key;
   key=(book *)malloc(sizeof(book));
   fp=fopen(bookDB,"rb"); //opening binary file in writing mode
+  int z=sizeof(key);
   if(fp==NULL)
   {
           printf(" book database open error\n");
@@ -87,7 +88,7 @@ void readBookRecords()
   {
    if(key->book_id!=0)
     printf(" %d\t%s\t%d\n",key->book_id,key->title/*key->author_name,key->course,key->cost,*/,key->quantity/*key->genre*/);
-    memset(key,0,sizeof(key));
+    memset(key,0,z);
   }
   fclose(fp);
   
@@ -572,6 +573,7 @@ void  getStudentBookIssues(LIBRARY *head)
     s=(student *)malloc(sizeof(student));
     b=(book *)malloc(sizeof(book));
     fp=fopen(bookissueDB,"rb"); //opening binary file in read mode
+    int z=sizeof(key);
     if(fp==NULL)
     {
          printf(" book issue database open error\n"); 
@@ -589,7 +591,7 @@ void  getStudentBookIssues(LIBRARY *head)
 	 
 	 printf("%ld\t%s\t\t%d\t%s\n",s->sid,s->sname,b->book_id,b->title);
 	 
-	 memset(key,0,sizeof(key));
+	 memset(key,0,z);
        }
     }
    fclose(fp);

@@ -92,11 +92,7 @@ typedef struct book_node
 {
     int book_id;
     char title[50];
-    /*char author_name[50];
-    char course[30];
-    float cost;*/
     int quantity;
-   // char genre[40];
 }book;
 
 

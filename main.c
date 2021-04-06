@@ -123,7 +123,6 @@ int main()
           case 10:
                 system("clear");
                 loadmenu();
-                getBooksIssuedbyTitle(lib);
                 loop=0;
                 printf("Thank You for using this software :) !!!");
                 break;

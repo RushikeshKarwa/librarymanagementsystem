@@ -104,7 +104,8 @@ ISSUE_TREE *getBookIssueDB()
   ISSUE_TREE *tree=NULL;
   book_issue *key,*tmp;
   key=(book_issue *)malloc(sizeof(book_issue));
-  memset(key,0,sizeof(key));
+  int z=sizeof(key);
+  memset(key,0,z);
   fp=fopen(bookissueDB,"rb"); //opening binary file in read mode
   if(fp==NULL)
   {

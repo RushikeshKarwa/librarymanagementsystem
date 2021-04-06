@@ -27,7 +27,7 @@ void menud()
   printf("6.To issue book to the student\n");
   printf("7.To get total book count in the library\n");
   printf("8.To get student list with issued books \n");
-  printf("9.To get students by Book Title\n\n");
+  printf("9.To get students by Book Title\n");
   printf("10.To exit from the library\n\n");
 
 }

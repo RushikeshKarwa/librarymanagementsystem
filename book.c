@@ -556,40 +556,7 @@ int searchBookAvailabilityById(int id)
     return flag;
 }
 
-/*
-book *searchBookByCourse(char *name)
-{
-    FILE *fp;
-    book *s;
-    int flag=0;
-    
-    fp=fopen(bookDB,"rb"); //opening binary file in reading mode
-    if(fp==NULL)
-    {
-           printf("book database open error\n");
-           exit(1);
-    }
-    fseek(fp,0,SEEK_SET);
-    s=(book *)malloc(sizeof(book));
-    memset(s,0,sizeof(book));
-         
-    while((fread(s,sizeof(book),1,fp))!=0)
-    {          
-          if(strcmp(s->course,name)==0)  //Record found,return
-	  {
-	    flag=1;
-	    break;
-	  }	  
-	  memset(s,0,sizeof(book));
-     }   
-    fclose(fp); 
-    if(flag)
-    return s;
-    else
-      return NULL;
-}
 
-*/
 void  getStudentBookIssues(LIBRARY *head)
 {
   LIBRARY *tmp;
@@ -628,58 +595,6 @@ void  getStudentBookIssues(LIBRARY *head)
    fclose(fp);
 }
 
-/*
-
-void getBookCostDetails(LIBRARY *root)
-{ 
-
-   LIBRARY *head;
-   book *brec=NULL;
-   char bname[50];
-   char ch;
-   int flag;
-   
-   head=root;
-   head->btree=getBookDB();
-   
-   printf("Enter Book Title to get the cost details\n");
-   ch=getchar();
-   scanf("%[^\n]s",bname);
-   ch=getchar();
-   
-   searchBookByTitle(head->btree,bname,&brec);
-   if(brec!=NULL)
-   {
-     printf(" Cost of %s is %f\n",bname,brec->cost);
-   }
-   else
-   {
-     printf("Book with Ttile %s is not available in library\n",bname);
-   }
-}
-
-void getBooksofSameContent(LIBRARY *head)
-{
-  LIBRARY *tmp;
-  FILE *fp;
-  book *key,b;
-  char bname[50];
-  char ch;
-  int count=0;
-  
-  tmp=head;
-  tmp->btree = getBookDB();
-  printf("Enter Book Title to search for similar books\n");
-  ch=getchar();
-  scanf("%[^\n]s",bname);
- // printf("Book Id\t\tBook Title\t\t\tAuthor Name\t\t\tCourse\t\tCost\tQunatity\tGenre\n");
-  getSimilarBooks(tmp->btree,bname,&count);  
-  if(count==0)
-    printf("Books with %s or similar content are not present in library\n",bname);
-  
-}
-
-*/
 
 void getStudentRecordById(STUDENT_TREE *root,int id,student **s)
 {
@@ -721,55 +636,6 @@ void getBookById(BOOK_TREE *root,int id,book **brec)
   }
 }
 
- /* 
-void getSimilarBooks(BOOK_TREE *root,char *str,int *n)
-{
-    if(root != NULL)
-    {
-       getSimilarBooks(root->left,str,&(*n));
-       if(((strstr(root->key->title,str))!=NULL) || ((strcmp(root->key->title,str))==0)) 
-       {
-	 (*n)++;
-	 printf("%d\t\t%-40s\t\t\t%-30s\t\t\t%-20s\t\t%f\t%d\t%s\n", root->key->book_id,root->key->title,root->key->author_name,root->key->course,root->key->cost,root->key->quantity,root->key->genre);
-       }
-        getSimilarBooks(root->right,str,&(*n));
-    }
-}
-
-void getBooksofSameAuthor(LIBRARY *head)
-{
-  LIBRARY *tmp;
-  FILE *fp;
-  book *key,b;
-  char bname[50];
-  char ch;
-  int count=0;
-  
-  tmp=head;
-  tmp->btree = getBookDB();
-  printf("Enter Author Name to get list of books\n");
-  ch=getchar();
-  scanf("%[^\n]s",bname);
-  printf("Book Id\tBook Title\t\tAuthor Name\t\tCourse\t\tCost\tQunatity\tGenre\n");
-  getAuthorBooks(tmp->btree,bname,&count);  
-  if(count==0)
-    printf("Books by %s are not present in library\n",bname);
-}
-
-void getAuthorBooks(BOOK_TREE *root,char *str,int *n)
-{
-  if(root != NULL)
-    {
-       getAuthorBooks(root->left,str,&(*n));
-       if((strcmp(root->key->author_name,str))==0)
-       {
-	 (*n)++;
-	 printf("%d\t %s\t %s\t %s\t %f\t %d\t%s\n", root->key->book_id,root->key->title,root->key->author_name,root->key->course,root->key->cost,root->key->quantity,root->key->genre);
-       }
-        getAuthorBooks(root->right,str,&(*n));
-    }
-}
-*/
 void getBookCount(LIBRARY *head)
 {
   LIBRARY *tmp;

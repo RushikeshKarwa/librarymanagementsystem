@@ -5,11 +5,6 @@
 #include "lib.h"
 
 
-
-
-
-
-
 // A utility function to get height of the tree
 int heightBookIssue(ISSUE_TREE *N)
 {
@@ -436,17 +431,7 @@ ISSUE_TREE *deleteBookIssueNode(ISSUE_TREE *root,book_issue *key)
    return root;
 }
  
-// A utility function to print preorder traversal of the tree.
-
-void preOrderBookIssue(ISSUE_TREE *root)
-{
-    if(root != NULL)
-    {
-        printf("%d %d\t%d\t%s\t%s\n",root->key->bookissue_id,root->key->book_id,root->key->sid,root->key->issue_date,root->key->expiry_date);
-	preOrderBookIssue(root->left);
-        preOrderBookIssue(root->right);
-    }
-}
+// A utility function to print inorder traversal of the tree.
 
 void inOrderBookIssue(ISSUE_TREE *root)
 {

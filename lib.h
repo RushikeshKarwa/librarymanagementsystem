@@ -235,7 +235,7 @@ ISSUE_TREE *deleteBookIssueNode(ISSUE_TREE *root, book_issue *key);
 
 // A utility function to print preorder traversal of the tree.
 
-void preOrderBookIssue(ISSUE_TREE *root);
+
 
 void createIssueRecords(ISSUE_TREE *root);
 
@@ -321,7 +321,6 @@ STUDENT_TREE *deleteStudentNode(STUDENT_TREE *root, student *key);
  
 // A utility function to print preorder traversal of the tree.
 
-void preOrderStudent(STUDENT_TREE *root);
 
 void createStudentRecords(STUDENT_TREE *root);
 

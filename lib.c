@@ -485,7 +485,7 @@ void updateBookAvailability(book *ptr,int set)
 
 
 
-
+/*
 
 LIBRARY *updateStudentlistWeekly(LIBRARY *root)
 {
@@ -572,7 +572,7 @@ LIBRARY *updateStudentlistWeekly(LIBRARY *root)
     fclose(fp);
     return tmp;
 }
-
+*/
 //Additional function implemented for book issue for adding records to system and also to test other functionality
 
 LIBRARY *BookIssueRequest(LIBRARY *root)

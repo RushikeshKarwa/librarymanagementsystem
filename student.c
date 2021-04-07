@@ -216,16 +216,6 @@ void createStudentRecords(STUDENT_TREE *root)
 
 // A utility function to print preorder traversal of the tree.
 
-void preOrderStudent(STUDENT_TREE *root)
-{
-    if(root != NULL)
-    {
-        printf("%ld  %s\n", root->key->sid,root->key->sname);
-	preOrderStudent(root->left);
-        preOrderStudent(root->right);
-    }
-}
-
 void inOrderStudent(STUDENT_TREE *root)
 {
     if(root!= NULL)

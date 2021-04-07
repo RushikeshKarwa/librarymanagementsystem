@@ -310,25 +310,18 @@ void insertStudentRecord(student *key);
 // Recursive function to insert key in subtree rooted with node and returns new root of subtree.
 STUDENT_TREE *insertStudent(STUDENT_TREE *node,student *key);
 
-STUDENT_TREE *minValueStudentNode(STUDENT_TREE *node);
-
-void updateStudentDB(student *key);
-
-void deleteStudentRecord(student *key);
- 
-// Recursive function to delete a node with given key from subtree with given root. It returns root of the modified subtree.
-STUDENT_TREE *deleteStudentNode(STUDENT_TREE *root, student *key);   
+  
  
 // A utility function to print preorder traversal of the tree.
 
 
 void createStudentRecords(STUDENT_TREE *root);
 
-//A function to print inorder raversal of the tree
+
 
 void inOrderStudent(STUDENT_TREE *root);
 
-int searchStudentById(int id);
+
 
 
 
@@ -341,15 +334,14 @@ LIBRARY *getBooksofStudent(LIBRARY *root);
 void getStudentlist(ISSUE_TREE *tmp,int a[]);
 void listBooksbyStudent(ISSUE_TREE *root,int id,int *x);
 
-void getBooksbyCourse(LIBRARY *root);
-void getCourselist(BOOK_TREE *t,char list[150][40]);
-void listBooksbyCourse(BOOK_TREE *root,char *str,int *x);
+
 
 //*****************************************************************************************/
 
 // Creation, insert, delete and update funcations for Book tree and .dat file
  
 /* Helper function that allocates a new node with the given key and  NULL left and right pointers. */
+int heightBook(BOOK_TREE *N);
 BOOK_TREE *newBookNode(book *key);
 
 BOOK_TREE *createBookDB(char *str);

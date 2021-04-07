@@ -431,17 +431,7 @@ BOOK_TREE *deleteBookNode(BOOK_TREE *root,book *key)
    return root;
 }
  
-// A utility function to print preorder traversal of the tree.
 
-void preOrderBook(BOOK_TREE *root)
-{
-    if(root != NULL)
-    {
-        printf("%d\t %s\t %d\t", root->key->book_id,root->key->title,/*root->key->author_name,root->key->course,root->key->cost,*/root->key->quantity/*root->key->genre*/);
-	preOrderBook(root->left);
-        preOrderBook(root->right);
-    }
-}
 
 void createBookRecords(BOOK_TREE *root)
 {

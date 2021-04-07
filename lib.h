@@ -364,10 +364,8 @@ void readBookRecords();
 
 BOOK_TREE *getBookDB();
 
-
-void insertRecord(book *key);
-
-  
+void createBookRecords(BOOK_TREE *root);
+ 
 // Recursive function to insert key in subtree rooted with node and returns new root of subtree.
 BOOK_TREE *insertBook(BOOK_TREE *node,book *key);
 
@@ -385,37 +383,17 @@ void searchBookByTitle(BOOK_TREE *r,char *name,book **b);
 
 int searchBookAvailabilityById(int id);
 
-book *searchBookByCourse(char *name);
-
- 
 // Recursive function to delete a node with given key from subtree with given root. It returns root of the modified subtree.
 BOOK_TREE *deleteBookNode(BOOK_TREE *root, book *key);
 
-    
-// A utility function to print preorder traversal of the tree.
-
-void preOrderBook(BOOK_TREE *root);
-
 
 // Search sub tasks
-
-
 
 void getStudentRecordById(STUDENT_TREE *root,int id,student **s);
 
 void getStudentBookIssues(LIBRARY *lib);
 
-void getBooksofSameContent(LIBRARY *lib);
-
-void getSimilarBooks(BOOK_TREE *b,char *p,int *x);
-
-void getBooksofSameAuthor(LIBRARY *lib);
-
-void getAuthorBooks(BOOK_TREE *b,char *p,int *x);
-
 void getBookCount(LIBRARY *lib);
-
-void getBookCostDetails(LIBRARY *lib);
 
 void getBookById(BOOK_TREE *root,int id,book **b);
 

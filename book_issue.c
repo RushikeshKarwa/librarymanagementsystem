@@ -564,19 +564,6 @@ ISSUE_TREE *createBookIssueDB(char *input)
    return root;
 }
 
-//Function searches Student DB by Id and returns Id
-void searchStudentByName(STUDENT_TREE *root,char  *name,int *x)
-{
-  if(root!=NULL)
-  {
-    if((strcmp(root->key->sname,name))==0)
-    {
-      (*x)=root->key->sid;
-    }
-    searchStudentByName(root->left,name,&(*x));
-    searchStudentByName(root->right,name,&(*x));
-  }    
-}
 
 //Function to get the list of books issued to student based on given book title
  

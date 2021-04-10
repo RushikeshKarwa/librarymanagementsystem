@@ -187,11 +187,6 @@ void updateBookAvailability(book *b,int x);
 
 /**************************End of deletion sub tasks and library support functions **************************************/
 
-
-
-
- 
-/* Helper function that allocates a new node with the given key and  NULL left and right pointers. */
 ISSUE_TREE *newIssueNode(book_issue *key);
 
 ISSUE_TREE *createBookIssueDB(char *str);
@@ -228,47 +223,17 @@ void updateBookIssueDB(book_issue *key);
 
 void deleteBookIssueRecord(book_issue *key);
 
-
-// Recursive function to delete a node with given key from subtree with given root. It returns root of the modified subtree.
 ISSUE_TREE *deleteBookIssueNode(ISSUE_TREE *root, book_issue *key);
-
-
-// A utility function to print preorder traversal of the tree.
-
-
 
 void createIssueRecords(ISSUE_TREE *root);
 
-
 void inOrderBookIssue(ISSUE_TREE *root);
-
-//Functions of Book subtasks
-
-void getBooksofStudentbyName(LIBRARY *root);
-void searchStudentByName(STUDENT_TREE *p,char *s,int *n);
-
 
 void  getBooksIssuedbyTitle(LIBRARY *root);
 
 void listBooksbyId(ISSUE_TREE *root,int id,int *x); 
-
-
-void getBooksIssuedbyCourse(LIBRARY *root);
-
-void getBooksIssuedbyAuthor(LIBRARY *root);
-
-void getBooksIssuedbyGenre(LIBRARY *lib);
-void listBooksIssuedbyGenre(ISSUE_TREE *root,int id,int *n);
-
-int searchBookIssueByBookId(int id);
-
-int searchBookIssueByStudentId(int id);
-
 int getBookIssueRecordCount();
 
-
-
- 
 // A utility function to get maximum of two integers
 int max(int a, int b);
 

@@ -28,7 +28,7 @@ void deleteQ(Queue *q)
   }
   free(q);
 }
-    
+  
 
 int isEmpty(Queue *q,int n)
 {

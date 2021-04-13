@@ -1,11 +1,4 @@
-// C program to implement student creation and other supporting functions
-
-
 #include "lib.h"
-
-
-
-// A utility function to get height of the tree
 
 int heightStudent(struct Node *N)
 {
@@ -13,16 +6,11 @@ int heightStudent(struct Node *N)
         return 0;
     return N->height;
 }
- 
-// A utility function to get maximum of two integers
 
 int max(int a, int b)
 {
     return (a > b)? a : b;
 }
-
-
-/* Helper function that allocates a new node with the given key and   NULL left and right pointers. */
 
 STUDENT_TREE *newStudentNode(student *key)
 {
@@ -33,46 +21,36 @@ STUDENT_TREE *newStudentNode(student *key)
     node->height = 1;  // new node is initially added at leaf
     return(node);
 }
- 
-// A utility function to right rotate subtree rooted with y
 
 STUDENT_TREE *rightRotateStudent(STUDENT_TREE *y)
 {
     STUDENT_TREE *x = y->left;
     STUDENT_TREE *T2 = x->right;
- 
-    // Perform rotation
+
     x->right = y;
     y->left = T2;
- 
-    // Update heights
+
     y->height = max(heightStudent(y->left), heightStudent(y->right))+1;
     x->height = max(heightStudent(x->left), heightStudent(x->right))+1;
- 
-    // Return new root
+
     return x;
 }
- 
-// A utility function to left rotate subtree rooted with x
+
 
 STUDENT_TREE *leftRotateStudent(STUDENT_TREE *x)
 {
     STUDENT_TREE *y = x->right;
     STUDENT_TREE *T2 = y->left;
  
-    // Perform rotation
     y->left = x;
     x->right = T2;
  
-    //  Update heights
     x->height = max(heightStudent(x->left), heightStudent(x->right))+1;
     y->height = max(heightStudent(y->left), heightStudent(y->right))+1;
- 
-    // Return new root
+
     return y;
 }
  
-// Get Balance factor of node N
 int getBalanceStudent(STUDENT_TREE *N)
 {
     if (N == NULL)
@@ -86,7 +64,7 @@ void readStudentRecords()
   FILE *fp;
   student *key;
   key=(student *)malloc(sizeof(student));
-  fp=fopen(studentDB,"rb"); //opening binary file in read mode
+  fp=fopen(studentDB,"rb"); 
   if(fp==NULL)
   {
           printf("student database open error\n");
@@ -108,8 +86,9 @@ STUDENT_TREE *getStudentDB()
   FILE *fp;
   STUDENT_TREE *tree=NULL;
   student *key,*tmp;
-   key=(student *)malloc(sizeof(student));
-  fp=fopen(studentDB,"rb"); //opening binary file in read mode
+  key=(student *)malloc(sizeof(student));
+  fp=fopen(studentDB,"rb"); 
+
   if(fp==NULL)
   {
           printf("student database open error\n");
@@ -131,7 +110,8 @@ STUDENT_TREE *getStudentDB()
 void insertStudentRecord(student *key)
 {
   FILE *fp;
-  fp=fopen(studentDB,"ab+"); //opening binary file in writing mode
+  fp=fopen(studentDB,"ab+");
+
   if(fp==NULL)
   {
           printf("student database open error\n");
@@ -141,14 +121,12 @@ void insertStudentRecord(student *key)
   fclose(fp);
   
 }
- 
-// Recursive function to insert key in subtree rooted with node and returns new root of subtree.
+
 STUDENT_TREE *insertStudent(STUDENT_TREE *node,student *key)
 {
     
     int balance;
-    
-    // 1.  Perform the normal BST insertion 
+
     if (node == NULL)
     {
        node = newStudentNode(key);
@@ -160,38 +138,29 @@ STUDENT_TREE *insertStudent(STUDENT_TREE *node,student *key)
            node->left  = insertStudent(node->left, key);
        else if(key->sid > node->key->sid)
           node->right = insertStudent(node->right, key);
-       else // Equal keys are not allowed in BST
+       else 
        {
-	 printf("Duplicate records are not allowed..please enter differnt values\n");
+	 printf("ID Already exists!!\n");
          return node;
        } 
-      
-       /* 2. Update height of this ancestor node */
+  
         node->height = 1 + max(heightStudent(node->left),heightStudent(node->right));
- 
-        /* 3. Get the balance factor of this ancestor node to check whether this node became  unbalanced */
+
         balance = getBalanceStudent(node);
- 
-       // If this node becomes unbalanced, then there are 4 cases
- 
-       // Left Left Case
-    
+
         if (balance > 1 && (key->sid < node->left->key->sid))
            return rightRotateStudent(node);
- 
-       // Right Right Case
-	
+
         if (balance < -1 && (key->sid > node->right->key->sid))
           return leftRotateStudent(node);
  
-       // Left Right Case
+
         if (balance > 1 && (key->sid > node->left->key->sid))
         {
            node->left =  leftRotateStudent(node->left);
            return rightRotateStudent(node);
         }
  
-        // Right Left Case
          if (balance < -1 && (key->sid < node->right->key->sid))
          {
             node->right = rightRotateStudent(node->right);
@@ -200,8 +169,7 @@ STUDENT_TREE *insertStudent(STUDENT_TREE *node,student *key)
       return node;
       }
 }
-  
-//Function to create student records in .dat file. Function traverses the AVL tree created and then inserts in .dat file. This is to avoid duplicate records in file.
+
 
 void createStudentRecords(STUDENT_TREE *root)
 {
@@ -214,14 +182,12 @@ void createStudentRecords(STUDENT_TREE *root)
 }
 
 
-// A utility function to print preorder traversal of the tree.
-
 void inOrderStudent(STUDENT_TREE *root)
 {
     if(root!= NULL)
     {
         inOrderStudent(root->left);
-	printf("%ld \t%s\n", root->key->sid,root->key->sname);
+      	printf("%ld \t%s\n", root->key->sid,root->key->sname);
         inOrderStudent(root->right);
     }
 }
@@ -232,23 +198,24 @@ int searchStudentById(int id)
     student *s;
     int flag=0;
     
-    fp=fopen(studentDB,"rb"); //opening binary file in reading mode
+    fp=fopen(studentDB,"rb"); 
+
     if(fp==NULL)
     {
            printf("student database open error\n");
            exit(1);
     }
-    fseek(fp,0,SEEK_SET);
+    fseek(fp,0,SEEK_SET);//search from start
     s=(student *)malloc(sizeof(student));
     memset(s,0,sizeof(student));
          
     while((fread(s,sizeof(student),1,fp))!=0)
     {          
-          if(s->sid == id)  //Record found,return
-	  {
-	    flag=1;
-	    break;
-	  }	  
+          if(s->sid == id)  
+	        {
+	            flag=1;
+	            break;
+	        }	  
      }   
     fclose(fp); 
     return flag;
@@ -265,7 +232,7 @@ STUDENT_TREE *createStudentDB(char *input)
    char word[2][40];
    char *ptr;
   
-   fp1=fopen(input,"r"); //opening text file in read mode
+   fp1=fopen(input,"r"); 
    if(fp1==NULL)
    {
       return NULL;
@@ -278,44 +245,34 @@ STUDENT_TREE *createStudentDB(char *input)
       ch=fgetc(fp1);      
       len=strlen(str);
       if(ch!=EOF)
-	 str[len-1]='\0';
+	      str[len-1]='\0';
       else
-	str[len]='\0';
-      
-      //writing to database now
+	        str[len]='\0';
+
       s=(student *)malloc(sizeof(student));
-      //s->sid=rand()%1000+0;
-       i=0;j=0;
+      i=0;j=0;
       ptr=strtok(str,",");
       strcpy(word[i++],ptr);
        
       while((ptr=strtok(NULL,","))!=NULL)
       {
-	strcpy(word[i++],ptr);	  
+          	strcpy(word[i++],ptr);	  
       }
-      
-     // len=strlen(word[1]);
-     // word[1][len-1]='\0';
-      s->sid = atoi(word[j++]);
-      
+
+      s->sid = atoi(word[j++]);  
       strcpy(s->sname,word[j]);
       i=j=0;
       root = insertStudent(root, s);
-      //insertStudentRecord(s);
       memset(str,0,sizeof(str));     
     }
 
-   //printf("completed DB creation\n");
    fclose(fp1);
    createStudentRecords(root);
    return root;
 }
 
-//Function used to print the list of books
-
 void listBook(BOOK_TREE *l)
-{
-  //printf("\nBook Id	Book Title	Author Name		Course		Cost		Qunatity	Genre\n");	
+{	
   inOrderBook(l);
 }
 
@@ -325,15 +282,11 @@ void inOrderBook(BOOK_TREE *root)
     if(root != NULL)
     {
         inOrderBook(root->left);
-	printf("%5d\t%-40s\t%4d\n", root->key->book_id,root->key->title,/*root->key->author_name,root->key->course,root->key->cost,
-  */root->key->quantity/*root->key->genre*/);
+	printf("%5d\t%-40s\t%4d\n", root->key->book_id,root->key->title,root->key->quantity);
         inOrderBook(root->right);
     }
 }
 
-
-
-//Function to get the list of student ids
 void getStudentlist(ISSUE_TREE *root,int a[SIZE])
 {
   static int i=0;
@@ -345,8 +298,6 @@ void getStudentlist(ISSUE_TREE *root,int a[SIZE])
     getStudentlist(root->right,a);
   }
 }
-
-//Funtion to list the issue details for given student id
 
 void listBooksbyStudent(ISSUE_TREE *root,int id,int *n)
 {

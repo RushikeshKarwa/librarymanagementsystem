@@ -36,10 +36,21 @@ int main()
     int loop=1;
     int menu;
     loadmenu();
-    menud();
+   // menud();
     printf("\n");
     lib = initDB();
-
+    int pass;
+    printf("Enter admin password\n");
+    scanf("%d",&pass);
+    if(pass==123456)
+    {
+       printf("Access provided!!\n");
+    }
+    else{
+      printf("Wrong password!!");
+      return 0;
+    }
+    menud();
     while(loop)
     {
       scanf("%d",&menu);

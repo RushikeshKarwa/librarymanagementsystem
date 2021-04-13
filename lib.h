@@ -5,14 +5,14 @@
 #define SIZE 9999
 
 
-//Initial input for .dat files(DB)  for student,book,book_issue and book_req DB
 #define studentfile "student.txt"
 #define studentDB "student.dat"
 
 #define bookReqDB "bookreqs.dat"
 
 #define bookfile "book.txt"
-#define newbooks "newbook.txt"  //Data used to insert and test Book additions
+#define newbooks "newbook.txt"  
+
 #define bookDB "book.dat"
 
 
@@ -36,10 +36,7 @@ typedef struct Que
   int num_queues;
   bookrequest **req;   
  }Queue;
- 
 
-
-// An AVL tree node
 
 typedef struct dt
 {
@@ -68,8 +65,6 @@ typedef struct issuetree
 }ISSUE_TREE;
 
 
-// AVL tree node of Student
-
 typedef struct studentNode
 {
   long int sid;
@@ -84,9 +79,6 @@ typedef struct Node
     int height;
 }STUDENT_TREE;
 
-
-
-// AVL tree node of Book
 
 typedef struct book_node
 {
@@ -105,7 +97,6 @@ typedef struct booktree
 }BOOK_TREE;
 
 
-
 typedef struct systemNode
 {
      STUDENT_TREE *stree;  
@@ -115,10 +106,6 @@ typedef struct systemNode
 }LIBRARY;
 
 
-//Funtions used in application
-
-
- 
 Queue *createQ();
  
 void deleteQ(Queue *q);
@@ -130,9 +117,7 @@ Queue *Enqueue(Queue *q,bookrequest *ptr);
 void Dequeue(Queue *q,int n);
 
 Queue *getBookReqDB(Queue *q);
- 
-//Functions to set date and calculate dates in future and past.
- 
+
 static int days_in_month[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 int day, month, year,next_update;
 unsigned short day_counter;
@@ -148,23 +133,15 @@ void next_day();
 
 date *convertDate(char *str);
 
- //Functions to read data from DB
+void readBookRequestRecords();
  
- void readBookRequestRecords();
+void insertBookRequestRecord(bookrequest *key);
  
- void insertBookRequestRecord(bookrequest *key);
- 
- void updateBookRequestDB(bookrequest *key);
+void updateBookRequestDB(bookrequest *key);
  
 void deleteBookRequestRecord(bookrequest *key);
 
-
-// Library Management System - Application initialization - DB creation and loading data into trees etc..
-
 LIBRARY *initDB();
-
-
-//Deletion Sub task funtions(LIBRARY *);
 
 STUDENT_TREE *loadStudents();
 
@@ -185,21 +162,13 @@ LIBRARY *addNewBooks(LIBRARY *lib);
 
 void updateBookAvailability(book *b,int x);
 
-/**************************End of deletion sub tasks and library support functions **************************************/
-
 ISSUE_TREE *newIssueNode(book_issue *key);
 
 ISSUE_TREE *createBookIssueDB(char *str);
- 
-// A utility function to right rotate subtree rooted with y 
 
 ISSUE_TREE *rightRotateBookKIssue(ISSUE_TREE *y);
- 
-// A utility function to left rotate subtree rooted with x
 
 ISSUE_TREE *leftRotateBookIssue(ISSUE_TREE *x);
- 
-// Get Balance factor of node N 
 
 int getBalanceIssue(ISSUE_TREE *N);
 
@@ -207,19 +176,14 @@ void readBookIssueRecords();
 
 ISSUE_TREE *getBookIssueDB();
 
-
 void insertBookIssueRecord(book_issue *key);
 
-  
-// Recursive function to insert key in subtree rooted with node and returns new root of subtree.
 ISSUE_TREE *insertBookIssue(ISSUE_TREE *node,book_issue *key);
 
 
 ISSUE_TREE *minValueBookIssueNode(ISSUE_TREE *node);
 
-
 void updateBookIssueDB(book_issue *key);
-
 
 void deleteBookIssueRecord(book_issue *key);
 
@@ -234,36 +198,19 @@ void  getBooksIssuedbyTitle(LIBRARY *root);
 void listBooksbyId(ISSUE_TREE *root,int id,int *x); 
 int getBookIssueRecordCount();
 
-// A utility function to get maximum of two integers
 int max(int a, int b);
 
-
-/*************************************Student Definitions and prototypes ********************************************************/
-
-
-//Function to create and AVL tree, student database and supporting functions to perform creation, insertion, update, search and deletion
-
 STUDENT_TREE *createStudentDB(char *str);
-/* Helper function that allocates a new node with the given key and  NULL left and right pointers. */
-STUDENT_TREE *newStudentNode(student *key);
- 
 
-// A utility function to get height of the tree
+STUDENT_TREE *newStudentNode(student *key);
+
 int heightStudent(STUDENT_TREE *N);
 
-// A utility function to right rotate subtree rooted with y 
-
 STUDENT_TREE *rightRotateStudent(STUDENT_TREE *y);
- 
-// A utility function to left rotate subtree rooted with x
 
 STUDENT_TREE *leftRotateStudent(STUDENT_TREE *x);
 
- 
-// Get Balance factor of node N 
-
 int getBalanceStudent(STUDENT_TREE *N);
-
 
 void readStudentRecords();
 
@@ -272,25 +219,12 @@ STUDENT_TREE *getStudentDB();
 int searchStudentById(int id);
 
 void insertStudentRecord(student *key);  
-// Recursive function to insert key in subtree rooted with node and returns new root of subtree.
+
 STUDENT_TREE *insertStudent(STUDENT_TREE *node,student *key);
-
-  
- 
-// A utility function to print preorder traversal of the tree.
-
 
 void createStudentRecords(STUDENT_TREE *root);
 
-
-
 void inOrderStudent(STUDENT_TREE *root);
-
-
-
-
-
-//Functions for Library Sub tasks
 
 void listBook(BOOK_TREE *x);
 void inOrderBook(BOOK_TREE *root);
@@ -299,28 +233,14 @@ LIBRARY *getBooksofStudent(LIBRARY *root);
 void getStudentlist(ISSUE_TREE *tmp,int a[]);
 void listBooksbyStudent(ISSUE_TREE *root,int id,int *x);
 
-
-
-//*****************************************************************************************/
-
-// Creation, insert, delete and update funcations for Book tree and .dat file
- 
-/* Helper function that allocates a new node with the given key and  NULL left and right pointers. */
 int heightBook(BOOK_TREE *N);
 BOOK_TREE *newBookNode(book *key);
 
 BOOK_TREE *createBookDB(char *str);
- 
-// A utility function to right rotate subtree rooted with y 
 
 BOOK_TREE *rightRotateBook(BOOK_TREE *y);
- 
-// A utility function to left rotate subtree rooted with x
 
 BOOK_TREE *leftRotateBook(BOOK_TREE *x);
-
- 
-// Get Balance factor of node N 
 
 int getBalanceBook(BOOK_TREE *N);
 
@@ -330,8 +250,7 @@ void readBookRecords();
 BOOK_TREE *getBookDB();
 
 void createBookRecords(BOOK_TREE *root);
- 
-// Recursive function to insert key in subtree rooted with node and returns new root of subtree.
+
 BOOK_TREE *insertBook(BOOK_TREE *node,book *key);
 
 
@@ -348,11 +267,7 @@ void searchBookByTitle(BOOK_TREE *r,char *name,book **b);
 
 int searchBookAvailabilityById(int id);
 
-// Recursive function to delete a node with given key from subtree with given root. It returns root of the modified subtree.
 BOOK_TREE *deleteBookNode(BOOK_TREE *root, book *key);
-
-
-// Search sub tasks
 
 void getStudentRecordById(STUDENT_TREE *root,int id,student **s);
 
@@ -363,13 +278,4 @@ void getBookCount(LIBRARY *lib);
 void getBookById(BOOK_TREE *root,int id,book **b);
 
 void insertBookRecord(book *key);
-
-
-
-
-
-
-
-
-
 
